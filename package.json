@@ -17,6 +17,7 @@
     "@sveltejs/vite-plugin-svelte": "^1.0.2",
     "@tsconfig/svelte": "^3.0.0",
     "@types/jest": "^29.2.2",
+    "@types/node": "^18.11.9",
     "@vitest/coverage-c8": "^0.25.0",
     "svelte": "^3.49.0",
     "svelte-check": "^2.8.1",
