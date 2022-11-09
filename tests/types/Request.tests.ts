@@ -1,4 +1,4 @@
-import { Request } from "../../types/Request";
+import { Request } from "../../src/types/Request";
 
 test("should construct object properly", () => {
   const request: Request = new Request(1234, "W", true);

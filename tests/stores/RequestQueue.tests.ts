@@ -1,5 +1,5 @@
-import { RequestQueueStore } from "src/stores/RequestQueue";
-import { Request } from "src/types/Request";
+import { RequestQueueStore } from "../../src/stores/RequestQueue";
+import { Request } from "../../src/types/Request";
 
 let requests: Request[] = [];
 
