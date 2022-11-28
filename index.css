@@ -1,0 +1,281 @@
+/*
+  ╔═══════════════════════════════════════════════════════════════════════════╗
+  ║ A "simple" stylesheet for cleaning up inconsistencies in various browsers ║
+  ╟───────────────────────────────────────────────────────────────────────────╢ 
+  ║  Author:       Dante De La Riva                                           ║
+  ║  Created:      Thursday, November 10, 2022                                ║
+  ║  Updated:      Sunday, November 27, 2022                                  ║
+  ║                                                                           ║
+  ║  Credit to the following for providing most of the reset styles in this   ║
+  ║  stylesheet:                                                              ║
+  ║                                                                           ║
+  ║    "https://uniformcss.com/docs/default-styles/"                          ║
+  ║    "https://piccalil.li/blog/a-modern-css-reset/"                         ║
+  ║                                                                           ║
+  ║  Credit to Tailwindcss for having such great colors                       ║
+  ║                                                                           ║
+  ║    "https://tailwindcss.com/docs/customizing-colors"                      ║
+  ╚═══════════════════════════════════════════════════════════════════════════╝
+*/
+
+/*
+  Fonts:
+    Inconsolata - For code and monospace needs
+    Poppins - For all other needs, really nice, legible font
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata&family=Poppins&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Support both dark and light themes */
+  color-scheme: dark light;
+
+  /* Default is dark mode */
+
+  --clr-base-000: #ffffff;
+  --clr-base-050: #f8f8f8;
+  --clr-base-100: #f0f0f0;
+  --clr-base-150: #e6e6e6;
+  --clr-base-200: #d4d4d4;
+  --clr-base-250: #bfbfbf;
+  --clr-base-300: #a3a3a3;
+  --clr-base-350: #8f8f8f;
+  --clr-base-400: #737373;
+  --clr-base-450: #636363;
+  --clr-base-500: #525252;
+  --clr-base-550: #4b4b4b;
+  --clr-base-600: #404040;
+  --clr-base-650: #323232;
+  --clr-base-700: #262626;
+  --clr-base-750: #1d1d1d;
+  --clr-base-800: #171717;
+  --clr-base-850: #121212;
+  --clr-base-900: #0d0d0d;
+  --clr-base-950: #080808;
+  --clr-base-999: #000000;
+
+  --clr-text: var(--clr-base-100);
+  --clr-text-dull: var(--clr-base-200);
+  --clr-text-selection: var(--clr-base-600);
+
+  --clr-accent: #3b82f6;
+  --clr-success: #16a34a;
+  --clr-warning: #d97706;
+  --clr-error: #ef4444;
+
+  --clr-accent-contrast: #171717;
+  --clr-success-contrast: #171717;
+  --clr-warning-contrast: #171717;
+  --clr-error-contrast: #171717;
+
+  /* 
+    Setting font size to 10px makes it easy to calculate rems
+
+    1.0rem = 10px
+    1.5rem = 15px
+    2.0rem = 20px
+    2.2rem = 22px
+    
+  */
+  font-size: 10px;
+
+  --font-regular: "Poppins", sans-serif;
+  --font-monospace: "Inconsolata", monospace;
+
+  font-family: var(--font-regular);
+}
+
+::selection {
+  /* This is what shows when text (or anything) is selected */
+
+  color: inherit;
+  background-color: var(--clr-text-selection);
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+
+  color: var(--clr-text);
+  background-color: var(--clr-base-900);
+
+  font-size: 2rem;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+}
+
+a {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: inherit;
+
+  /* 
+    If has underline, then be sure to not underline through characters that
+    extend below the line
+  */
+  text-decoration-skip-ink: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  /* All media elements set to block and full width */
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  /* These elements don't inherit font settings, strangely */
+  font: inherit;
+  line-height: inherit;
+  color: inherit;
+  border: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+select {
+  cursor: pointer;
+}
+
+textarea {
+  /* Move the label to the top */
+  vertical-align: top;
+
+  /* Turn off scroll bars in IE unless needed */
+  overflow: auto;
+}
+
+input:hover,
+input:focus,
+button:hover,
+button:focus,
+textarea:hover,
+textarea:focus,
+select:hover,
+select:focus {
+  /* Yes, you will need to provide your own hover and focus states! */
+  border: none;
+  outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+ol[role="list"],
+ul[role="list"] {
+  list-style: none;
+
+  /*
+    See "https://www.scottohara.me/blog/2019/01/12/lists-and-safari.html"
+
+    Essentially:
+      Safari will remove the role="list" for lists that have been styled to not
+      look like lists. The problem with this is that screen readers and other
+      disability aids do not understand that default lists look horrible and we
+      want to restyle them. In order to work around this, be sure to use:
+
+        <ul role="list">
+          ...
+        </ul>
+
+      whenever possible to avoid this issue. If you do so, then the above will
+      activate, letting you know that you've done it properly.
+  */
+}
+
+::-moz-placeholder {
+  /* Reset firefox placeholder opacity */
+  opacity: 1;
+}
+
+pre,
+code {
+  /* Code-related elements should use monospace font */
+  font-family: var(--font-monospace);
+}
+
+/* ========================================================================= */
+/* ==========|  Media Overrides  |========================================== */
+/* ========================================================================= */
+
+@media (prefers-color-scheme: light) {
+  /* Set theme to light mode */
+
+  :root {
+    --clr-base-000: #000000;
+    --clr-base-050: #080808;
+    --clr-base-100: #0d0d0d;
+    --clr-base-150: #121212;
+    --clr-base-200: #171717;
+    --clr-base-250: #1d1d1d;
+    --clr-base-300: #262626;
+    --clr-base-350: #323232;
+    --clr-base-400: #404040;
+    --clr-base-450: #4b4b4b;
+    --clr-base-500: #525252;
+    --clr-base-550: #636363;
+    --clr-base-600: #737373;
+    --clr-base-650: #8f8f8f;
+    --clr-base-700: #a3a3a3;
+    --clr-base-750: #bfbfbf;
+    --clr-base-800: #d4d4d4;
+    --clr-base-850: #e6e6e6;
+    --clr-base-900: #f0f0f0;
+    --clr-base-950: #f8f8f8;
+    --clr-base-999: #ffffff;
+
+    --clr-text: var(--clr-base-100);
+    --clr-text-dull: var(--clr-base-400);
+    --clr-text-selection: var(--clr-base-800);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /*
+    Remove all animations, transitions and smooth scroll for people that prefer
+    not to see them
+  */
+
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
