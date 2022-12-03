@@ -33,3 +33,9 @@ $ npm install
 # Start in watch mode
 $ npm run dev
 ```
+
+## What happens now?
+
+I intend to continue working on this. I think that merging this project with the Instruction Set project would be pretty neat.
+
+In the off chance that you want to continue seeing where this goes, this is the [link](https://github.com/DD169/memory-hierarchy-simulation)
